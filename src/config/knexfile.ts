@@ -1,16 +1,15 @@
 import dotenv from 'dotenv';
-
 dotenv.config();
 
 const { DB_CLIENT, DB_NAME, DB_USER, DB_PASSWORD } = process.env;
 
 const config = {
   development: {
-    client: 'postgresql',
+    client: DB_CLIENT,
     connection: {
-      database: 'book-store',
-      user: 'postgres',
-      password: '1234',
+      database: DB_NAME,
+      user: DB_USER,
+      password: DB_PASSWORD,
     },
     pool: {
       min: 2,

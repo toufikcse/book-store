@@ -13,5 +13,7 @@ const Messages = {
   ServerError: 'Something is wrong. Please try again later.',
   ValidationError: 'Validation errors occurred.',
   AuthorBookFetchList: 'Author all Books fetched successfully.',
+  CanNotDeleteAuthor:
+    'The author cannot be deleted because they have associated books in the database.',
 };
 export default Messages;

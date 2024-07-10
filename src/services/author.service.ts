@@ -1,3 +1,4 @@
+import BadRequestError from '@common/errors/http400Error';
 import NotFoundError from '@common/errors/http404Error';
 import Messages from '@common/messages';
 import AuthorRepository from '@src/repositories/author.repository';
@@ -39,6 +40,12 @@ export class AuthorService {
     if (!find) {
       throw new NotFoundError(Messages.AuthorNotFound);
     }
+    const authorBookList = await AuthorRepository.getBooksByAuthor(id);
+
+    if (authorBookList.length > 0) {
+      throw new BadRequestError(Messages.CanNotDeleteAuthor);
+    }
+
     const deletedAuthor = await AuthorRepository.deleteAuthor(id);
     return deletedAuthor;
   }
